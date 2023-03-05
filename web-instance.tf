@@ -1,3 +1,4 @@
+#Creating my webserver instance and using UserData which is script is run automatically when you first time poweron your instance, I can start apache service 
 resource "aws_instance" "ec2_1" {
 for_each = aws_subnet.main-subnet 
    subnet_id      = each.value.id
@@ -18,6 +19,8 @@ for_each = aws_subnet.main-subnet
       Name = "omar_instance"
   }
 }
+
+#Assign elastic ip to my instance
 resource  "aws_eip" "my-eip"{
     vpc = true
 }
