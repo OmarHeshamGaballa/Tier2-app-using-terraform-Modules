@@ -1,3 +1,6 @@
+
+#Creating Security group for my webserver
+
 resource "aws_security_group" "webserver_sg" {
   name        = "webserver_sg"
   description = "allow inbound traffic"
@@ -26,12 +29,14 @@ resource "aws_security_group" "webserver_sg" {
      name = "webserver_sg"
   }
 }
+
+#Creating Security group for my database
+
 resource "aws_security_group" "database_sg" {
   name        = "database_sg"
   description = "allow inbound traffic from ALB"
   vpc_id      = aws_vpc.main-vpc.id
 
-  # allow traffic from ALB 
   ingress {
      from_port   = 3306
      to_port     = 3306
