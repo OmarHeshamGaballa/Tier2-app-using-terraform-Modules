@@ -1,4 +1,5 @@
-#Creating 
+#Creating subnet group for database
+
 resource "aws_db_subnet_group" "default" {
   name       = "db_sub_grp"
   subnet_ids = [aws_subnet.private-subnet["priv-1"].id, aws_subnet.private-subnet["priv-2"].id]
@@ -6,6 +7,9 @@ resource "aws_db_subnet_group" "default" {
      Name = "rds_subnet_group"
   }
 }
+
+#Creating an instance for database
+
 resource "aws_db_instance" "my_db" {
   allocated_storage      = 10
   db_subnet_group_name   = "db_sub_grp"
